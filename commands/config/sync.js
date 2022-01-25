@@ -2,7 +2,7 @@ const { purgeDbGuild } = require('../../util/Util');
 const { OAuth2Guild } = require('discord.js');
 
 exports.run = async(client, message, args) => {
-    console.log('[DISCORD] Syncing DB against servers... (interval: 10 minutes)');
+    const msg = await message.channel.send('Syncing DB against servers...');
     const dbServer = await client.db.guilds.find({
         guildID: message.guild.id,
     });
@@ -57,7 +57,7 @@ exports.run = async(client, message, args) => {
             };
         };
     };
-    console.log('[DISCORD] Fetching leaving members...');
+    msg.edit('Fetching leaving members...');
     const allJoinData = await client.db.joins.find({
         guildId: message.guild.id
     });
@@ -89,7 +89,7 @@ exports.run = async(client, message, args) => {
             };
         }
     };
-    console.log('[DISCORD] Fetching existing invites...');
+    msg.edit('Fetching existing invites...');
     const allInvites = await client.db.invites.find({
         guildId: message.guild.id
     });
@@ -104,7 +104,7 @@ exports.run = async(client, message, args) => {
                 });
             }
         }
-        console.log('[DISCORD] Fetching ranks against roles...');
+        msg.edit('Fetching ranks against roles...');
         const roles = await client.db.roles.find({
             guildId: message.guild.id
         });
@@ -143,7 +143,7 @@ exports.run = async(client, message, args) => {
                         member.roles.add(roleObj);
                     });
                 }
-                console.log(`[DISCORD] Fetching roles against ranks in guild ${guildId}`);
+                msg.edit(`Fetching roles against ranks in guild ${guildId}`);
                 const rankRoles = guildRoles.map(role => role.roleId);
                 let everyMembers = await guild.members.fetch();
                 everyMembers = everyMembers.filter(member => member._roles.some(role => rankRoles.includes(role)));
