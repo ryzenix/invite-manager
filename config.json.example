@@ -1,0 +1,9 @@
+{
+    "mongoURL": "",
+    "token": "",
+    "prefix": "",
+    "fakeTimeoutMs": ''
+}
+
+
+// copy this file, rename it to "config.json" and remove this comment

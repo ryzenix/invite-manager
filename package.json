@@ -1,0 +1,18 @@
+{
+  "name": "invite-manager",
+  "version": "1.0.0",
+  "description": "A Discord bot that manage your invitation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^14.2.0",
+    "heatsync": "^2.2.1",
+    "mongoose": "^6.1.7",
+    "node-schedule": "^2.1.0"
+  }
+}
