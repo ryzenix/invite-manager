@@ -2,6 +2,16 @@ process.on('unhandledRejection', error => {
     console.error(`unhandledRejection:`, error);
 });
 
+const fs = require('fs');
+
+
+// if hosting via heroku
+if (!fs.existsSync('config.json')) {
+    console.log('Creating config.json based on evironment variables');
+    const output = JSON.stringify(process.env, null, 4);
+    fs.appendFile('config.json', output)
+}
+
 const config = require('./config.json');
 
 
