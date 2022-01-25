@@ -14,5 +14,8 @@
     "heatsync": "^2.2.1",
     "mongoose": "^6.1.7",
     "node-schedule": "^2.1.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
